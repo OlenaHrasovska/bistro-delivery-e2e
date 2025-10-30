@@ -1,7 +1,9 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test'
 import 'dotenv/config'
 
-const DEMO_BASE_URL:string = 'https://hypersequent.github.io/bistro/'
+if (typeof process.env.DEMO_BASE_URL === 'undefined') {
+	throw new Error('DEMO_BASE_URL is not set')
+}
 
 
 /**
