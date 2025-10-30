@@ -77,4 +77,4 @@ jobs:
       
       - name: Summary
         if: always()
-        run: echo "✅ Test results uploaded to QA Sphere"
+        run: echo "✅ Test results uploaded to QA Sphere successfully"
