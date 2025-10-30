@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: echo "DEMO_BASE_URL=https://hypersequent.github.io/bistro/" > .env
       
       - name: Install dependencies
         run: npm ci
