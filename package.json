@@ -1,0 +1,65 @@
+{
+	"name": "bistrot-e2e",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"clean": "rimraf allure-results && rimraf allure-report && rimraf test-results && rimraf playwright-report && rimraf junit-results && rimraf lighthouse",
+		"format": "prettier --write .",
+		"install-deps": "npx playwright install-deps",
+		"lint": "prettier --check . && eslint .",
+		"play-report": "npx playwright show-report",
+		"prepare": "husky",
+		"reinstall": "npx playwright install",
+		"test": "npm run chromium",
+		"test-head": "npm run chromium -- --headed",
+		"chromium": "npm run clean && npx playwright test --project=chromium",
+		"firefox": "npm run clean && npx playwright test --project=firefox",
+		"webkit": "npm run clean && npx playwright test --project=webkit"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Hypersequent/bistro-e2e.git"
+	},
+	"keywords": [
+		"playwright",
+		"playwright-test",
+		"web test automation"
+	],
+	"author": "Hypersequent",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Hypersequent/bistro-e2e/issues"
+	},
+	"homepage": "https://github.com/Hypersequent/bistro-e2e#readme",
+	"devDependencies": {
+		"@playwright/test": "^1.45.1",
+		"@types/eslint": "^8.56.10",
+		"@types/node": "^20.14.10",
+		"@typescript-eslint/eslint-plugin": "^7.16.0",
+		"@typescript-eslint/parser": "^7.16.0",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.7",
+		"prettier": "^3.3.3",
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.3"
+	},
+	"dependencies": {
+		"@faker-js/faker": "^8.4.1",
+		"dotenv": "^16.4.5",
+		"rimraf": "^6.0.1",
+		"zod": "^3.22.4"
+	},
+	"lint-staged": {
+		"*.{js,ts,svelte}": [
+			"prettier --write",
+			"eslint --ext js,ts,svelte --quiet --fix --"
+		],
+		"*.{md,mdx,cjs,mjs,yml,yaml,html,mjml,css,scss,json}": [
+			"prettier --write"
+		]
+	}
+}
