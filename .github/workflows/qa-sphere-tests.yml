@@ -52,20 +52,24 @@ jobs:
     
     steps:
       - name: Download test results
+        if: always()
         uses: actions/download-artifact@v4
         with:
           name: junit-results
           path: junit-results/
       
       - name: Setup Node.js
+        if: always()
         uses: actions/setup-node@v4
         with:
           node-version: '18'
       
       - name: Install QAS CLI
+        if: always()
         run: npm install -g qas-cli
       
       - name: Upload to QA Sphere
+        if: always()
         env:
           QAS_TOKEN: ${{ secrets.QAS_TOKEN }}
           QAS_URL: ${{ secrets.QAS_URL }}
